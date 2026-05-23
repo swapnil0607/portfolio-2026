@@ -44,7 +44,11 @@
 .content-block,
 .timeline-item,
 .stat-card,
-.approach-card {
+.approach-card,
+.flyer-mockup,
+.social-post-card,
+.widget-demo-card,
+.portal-showcase-card {
   opacity: 0;
   transform: translate3d(0, 22px, 0);
   transition:
@@ -61,7 +65,11 @@
 .content-block.is-visible,
 .timeline-item.is-visible,
 .stat-card.is-visible,
-.approach-card.is-visible {
+.approach-card.is-visible,
+.flyer-mockup.is-visible,
+.social-post-card.is-visible,
+.widget-demo-card.is-visible,
+.portal-showcase-card.is-visible {
   opacity: 1;
   transform: translate3d(0, 0, 0);
 }
@@ -73,7 +81,11 @@
 .content-block.has-revealed,
 .contact-card.has-revealed,
 .stat-card.has-revealed,
-.approach-card.has-revealed {
+.approach-card.has-revealed,
+.flyer-mockup.has-revealed,
+.social-post-card.has-revealed,
+.widget-demo-card.has-revealed,
+.portal-showcase-card.has-revealed {
   transition:
     transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
     border-color 320ms ease,
@@ -88,7 +100,11 @@
 .content-block.has-revealed:hover,
 .contact-card.has-revealed:hover,
 .stat-card.has-revealed:hover,
-.approach-card.has-revealed:hover {
+.approach-card.has-revealed:hover,
+.flyer-mockup.has-revealed:hover,
+.social-post-card.has-revealed:hover,
+.widget-demo-card.has-revealed:hover,
+.portal-showcase-card.has-revealed:hover {
   transform: translate3d(0, -8px, 0);
 }
 
@@ -115,7 +131,11 @@
   .content-block,
   .timeline-item,
   .stat-card,
-  .approach-card {
+  .approach-card,
+  .flyer-mockup,
+  .social-post-card,
+  .widget-demo-card,
+  .portal-showcase-card {
     opacity: 1;
     transform: none;
   }

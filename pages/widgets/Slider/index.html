@@ -24,11 +24,12 @@
         body {
             background-color: transparent;
             font-family: 'Montserrat', sans-serif;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         .widget-container {
-            width: 970px;
+            width: min(970px, 100vw);
             height: 320px;
             margin: 0 auto;
             position: relative;
@@ -173,7 +174,83 @@
         }
 
         @media (max-width: 768px) {
-            .widget-container { width: 970px; }
+            body {
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                background: var(--taj-maroon);
+            }
+
+            .widget-container {
+                width: 100vw;
+                height: min(76vh, 520px);
+                min-height: 420px;
+                border-radius: 0;
+            }
+
+            .content-wrapper {
+                flex-direction: column;
+                align-items: flex-start;
+                justify-content: center;
+                gap: 18px;
+                padding: 38px 28px 82px;
+            }
+
+            .text-block {
+                flex: 0 0 auto;
+                height: auto;
+                margin-top: 0;
+                padding-right: 8px;
+            }
+
+            .leader-title {
+                font-size: clamp(2rem, 10vw, 3.1rem);
+                max-width: 92vw;
+            }
+
+            .leader-designation {
+                margin-bottom: 18px;
+                letter-spacing: 3px;
+            }
+
+            .leader-quote {
+                max-width: 88vw;
+                font-size: 0.88rem;
+            }
+
+            .image-side {
+                position: absolute;
+                right: -6vw;
+                bottom: 0;
+                width: 44vw;
+                height: 54%;
+                opacity: 0.82;
+            }
+
+            .leader-img-container {
+                height: 100%;
+            }
+
+            .dot-navigation {
+                left: 28px;
+                bottom: 34px;
+            }
+        }
+
+        @media (max-width: 430px) {
+            .widget-container {
+                min-height: 460px;
+            }
+
+            .content-wrapper {
+                padding: 34px 22px 78px;
+            }
+
+            .image-side {
+                right: -14vw;
+                width: 58vw;
+                opacity: 0.62;
+            }
         }
     </style>
 </head>

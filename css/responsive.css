@@ -144,11 +144,15 @@
   }
 
   .page-hero {
-    padding: 112px 0 34px;
+    padding: 96px 0 22px;
+  }
+
+  .page-hero + .section-padding {
+    padding-top: 34px;
   }
 
   .page-intro {
-    padding: 28px;
+    padding: 24px;
   }
 
   .hero-grid {
@@ -171,7 +175,8 @@
   }
 
   .portrait-card img {
-    height: 430px;
+    height: auto;
+    max-height: 430px;
     min-height: 0;
   }
 
@@ -237,6 +242,10 @@
 
   .portal-showcase-card {
     padding: 18px;
+  }
+
+  [data-parallax] {
+    transform: none !important;
   }
 
   .page-mockup-bar p,
@@ -329,6 +338,14 @@
     padding-bottom: 58px;
   }
 
+  .page-hero {
+    padding: 86px 0 16px;
+  }
+
+  .page-hero + .section-padding {
+    padding-top: 24px;
+  }
+
   .eyebrow {
     font-size: 0.68rem;
     letter-spacing: 0.11em;
@@ -386,7 +403,8 @@
   }
 
   .portrait-card img {
-    height: min(112vw, 390px);
+    height: auto;
+    max-height: min(112vw, 390px);
   }
 
   .portrait-caption {

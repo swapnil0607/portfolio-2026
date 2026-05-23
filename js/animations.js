@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
+  const isTouchViewport = window.matchMedia("(max-width: 768px)").matches;
   const animatedItems = document.querySelectorAll(
-    ".reveal, .project-card, .case-study-card, .service-card, .process-card, .content-block, .timeline-item, .stat-card, .approach-card"
+    ".reveal, .project-card, .case-study-card, .service-card, .process-card, .content-block, .timeline-item, .stat-card, .approach-card, .flyer-mockup, .social-post-card, .widget-demo-card, .portal-showcase-card"
   );
 
   const markReady = (item) => {
@@ -40,18 +41,25 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      rootMargin: "0px 0px -8% 0px",
-      threshold: 0.12
+      rootMargin: isTouchViewport ? "0px 0px 18% 0px" : "0px 0px -8% 0px",
+      threshold: isTouchViewport ? 0.01 : 0.12
     }
   );
 
   animatedItems.forEach((item, index) => {
-    item.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 45}ms`);
+    item.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * (isTouchViewport ? 24 : 45)}ms`);
     observer.observe(item);
   });
 
   const parallaxItems = document.querySelectorAll("[data-parallax]");
   let parallaxTicking = false;
+
+  if (isTouchViewport) {
+    parallaxItems.forEach((item) => {
+      item.style.removeProperty("--parallax-y");
+    });
+    return;
+  }
 
   const updateParallax = () => {
     const scrollY = window.scrollY || window.pageYOffset;
