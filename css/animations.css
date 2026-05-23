@@ -1,0 +1,122 @@
+@keyframes heroFadeUp {
+  from {
+    opacity: 0.01;
+    transform: translate3d(0, 18px, 0);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.hero-item {
+  animation: heroFadeUp 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  backface-visibility: hidden;
+}
+
+.hero-copy .hero-item:nth-child(1) {
+  animation-delay: 40ms;
+}
+
+.hero-copy .hero-item:nth-child(2) {
+  animation-delay: 95ms;
+}
+
+.hero-copy .hero-item:nth-child(3) {
+  animation-delay: 145ms;
+}
+
+.hero-copy .hero-item:nth-child(4) {
+  animation-delay: 195ms;
+}
+
+.hero-visual.hero-item,
+.case-hero-visual.hero-item {
+  animation-delay: 180ms;
+}
+
+.reveal,
+.project-card,
+.case-study-card,
+.service-card,
+.process-card,
+.content-block,
+.timeline-item,
+.stat-card,
+.approach-card {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition:
+    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
+    transform 620ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.reveal.is-visible,
+.project-card.is-visible,
+.case-study-card.is-visible,
+.service-card.is-visible,
+.process-card.is-visible,
+.content-block.is-visible,
+.timeline-item.is-visible,
+.stat-card.is-visible,
+.approach-card.is-visible {
+  opacity: 1;
+  transform: translate3d(0, 0, 0);
+}
+
+.project-card.has-revealed,
+.case-study-card.has-revealed,
+.service-card.has-revealed,
+.process-card.has-revealed,
+.content-block.has-revealed,
+.contact-card.has-revealed,
+.stat-card.has-revealed,
+.approach-card.has-revealed {
+  transition:
+    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 320ms ease,
+    box-shadow 420ms ease,
+    background 320ms ease;
+}
+
+.project-card.has-revealed:hover,
+.case-study-card.has-revealed:hover,
+.service-card.has-revealed:hover,
+.process-card.has-revealed:hover,
+.content-block.has-revealed:hover,
+.contact-card.has-revealed:hover,
+.stat-card.has-revealed:hover,
+.approach-card.has-revealed:hover {
+  transform: translate3d(0, -8px, 0);
+}
+
+[data-parallax] {
+  transform: translate3d(0, var(--parallax-y, 0), 0);
+  will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-delay: 0ms !important;
+    animation-iteration-count: 1 !important;
+  }
+
+  .reveal,
+  .project-card,
+  .case-study-card,
+  .service-card,
+  .process-card,
+  .content-block,
+  .timeline-item,
+  .stat-card,
+  .approach-card {
+    opacity: 1;
+    transform: none;
+  }
+}

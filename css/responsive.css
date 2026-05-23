@@ -1,0 +1,725 @@
+@media (max-width: 992px) {
+  :root {
+    --nav-height: 74px;
+  }
+
+  html {
+    scroll-padding-top: 94px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  .menu-toggle,
+  .mobile-nav {
+    display: grid;
+  }
+
+  .mobile-nav {
+    display: flex;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+
+  .hero {
+    padding-top: 132px;
+    padding-bottom: 76px;
+    min-height: auto;
+  }
+
+  .hero-grid,
+  .split-grid,
+  .page-intro,
+  .contact-layout,
+  .case-story-grid,
+  .case-story-panels,
+  .editorial-showcase,
+  .widget-demo-card {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-copy {
+    text-align: center;
+  }
+
+  .hero-description,
+  .hero-actions,
+  .section-text {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-actions {
+    justify-content: center;
+  }
+
+  .hero-visual,
+  .portrait-card,
+  .widget-demo-copy {
+    width: 100%;
+  }
+
+  .portrait-card {
+    max-width: 520px;
+    margin: 0 auto;
+  }
+
+  .project-grid,
+  .case-study-grid,
+  .services-grid,
+  .case-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .approach-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .portal-focus-grid,
+  .flyer-showcase-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .widget-demo-card {
+    gap: 20px;
+  }
+
+  .widget-demo-copy {
+    align-items: flex-start;
+    padding: 0 4px 6px;
+  }
+
+  .section-heading {
+    display: block;
+  }
+
+  .section-heading h2 {
+    margin-top: 12px;
+  }
+
+  .page-intro p:not(.eyebrow) {
+    max-width: 680px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    width: min(calc(100% - 32px), var(--container));
+  }
+
+  .section-padding {
+    padding: 72px 0;
+  }
+
+  .nav-shell {
+    gap: 16px;
+  }
+
+  .logo {
+    font-size: 1.22rem;
+  }
+
+  .mobile-nav {
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 18px;
+    padding: 42px 24px;
+  }
+
+  .mobile-nav a {
+    font-size: clamp(2rem, 12vw, 3.5rem);
+    line-height: 1;
+  }
+
+  .hero-title,
+  .page-intro h1 {
+    font-size: clamp(2.35rem, 8.5vw, 3.4rem);
+    line-height: 1.1;
+  }
+
+  .page-hero {
+    padding: 112px 0 34px;
+  }
+
+  .page-intro {
+    padding: 28px;
+  }
+
+  .hero-grid {
+    gap: 42px;
+  }
+
+  .hero-copy {
+    text-align: left;
+  }
+
+  .hero-description,
+  .hero-actions,
+  .section-text {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .hero-actions {
+    justify-content: flex-start;
+  }
+
+  .portrait-card img {
+    height: 430px;
+    min-height: 0;
+  }
+
+  .project-grid,
+  .case-study-grid,
+  .services-grid,
+  .content-grid,
+  .case-grid,
+  .stat-grid,
+  .portal-focus-grid,
+  .flyer-showcase-grid,
+  .case-story-grid,
+  .case-story-panels,
+  .approach-grid,
+  .comparison-pair,
+  .editorial-showcase,
+  .widget-demo-card,
+  .final-screens {
+    grid-template-columns: 1fr;
+  }
+
+  .case-story-hero {
+    padding: 118px 0 54px;
+  }
+
+  .case-story-copy h1 {
+    font-size: clamp(2.35rem, 8vw, 4.2rem);
+  }
+
+  .case-story-visual img,
+  .editorial-showcase img {
+    height: 420px;
+  }
+
+  .case-story-visual .page-mockup-browser {
+    max-height: 420px;
+  }
+
+  .case-study-card {
+    min-height: 410px;
+  }
+
+  .brand-thumbnail {
+    min-height: 220px;
+  }
+
+  .before-after {
+    min-height: 460px;
+  }
+
+  .media-card img,
+  .final-screens img {
+    height: 340px;
+  }
+
+  .portal-card-heading {
+    display: block;
+  }
+
+  .portal-card-heading h3 {
+    margin-top: 8px;
+  }
+
+  .portal-showcase-card {
+    padding: 18px;
+  }
+
+  .page-mockup-bar p,
+  .mockup-topbar p {
+    max-width: 54%;
+  }
+
+  .social-post-card {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .social-post-mockup {
+    width: min(100%, 430px);
+    justify-self: center;
+  }
+
+  .social-post-copy {
+    max-width: 520px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+
+  .widget-preview-cards {
+    height: 386px;
+  }
+
+  .widget-preview-cards iframe {
+    transform: scale(0.56);
+  }
+
+  .widget-preview-slider {
+    height: 180px;
+  }
+
+  .widget-preview-slider iframe {
+    transform: scale(0.56);
+  }
+
+  .project-nav {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 576px) {
+  :root {
+    --nav-height: 68px;
+  }
+
+  html {
+    scroll-padding-top: 86px;
+  }
+
+  body {
+    background:
+      radial-gradient(circle at 0% 7%, rgba(79, 70, 229, 0.28), transparent 32%),
+      radial-gradient(circle at 100% 20%, rgba(34, 211, 238, 0.12), transparent 28%),
+      linear-gradient(180deg, #050816 0%, #070a18 44%, #050816 100%);
+  }
+
+  .container {
+    width: min(calc(100% - 28px), var(--container));
+  }
+
+  .nav-shell {
+    min-height: var(--nav-height);
+  }
+
+  .menu-toggle {
+    width: 40px;
+    height: 40px;
+  }
+
+  .mobile-nav {
+    padding: 36px 18px;
+  }
+
+  .hero-copy,
+  .hero-actions,
+  .hero-title,
+  .hero-description,
+  .hero .eyebrow {
+    max-width: calc(100vw - 32px);
+  }
+
+  .hero {
+    padding-top: 112px;
+    padding-bottom: 58px;
+  }
+
+  .eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.11em;
+  }
+
+  .hero-title,
+  .page-intro h1 {
+    font-size: 2.22rem;
+    line-height: 1.08;
+  }
+
+  .page-intro p:not(.eyebrow) {
+    padding-left: 0;
+    border-left: 0;
+  }
+
+  .hero-description {
+    font-size: 1rem;
+  }
+
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 12px;
+  }
+
+  .hero-actions,
+  .btn {
+    width: 100%;
+  }
+
+  .filter-row {
+    width: calc(100vw - 28px);
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 6px;
+    scrollbar-width: none;
+  }
+
+  .filter-row::-webkit-scrollbar {
+    display: none;
+  }
+
+  .filter-btn {
+    flex: 0 0 auto;
+  }
+
+  .btn,
+  .filter-btn {
+    justify-content: center;
+  }
+
+  .portrait-card {
+    padding: 10px;
+  }
+
+  .portrait-card img {
+    height: min(112vw, 390px);
+  }
+
+  .portrait-caption {
+    position: static;
+    margin-top: 12px;
+  }
+
+  .skills-cloud > span {
+    width: 100%;
+    text-align: left;
+  }
+
+  .skills-cloud .skill-chip,
+  .tool-chip.skill-chip {
+    justify-content: flex-start;
+  }
+
+  .content-block,
+  .service-card,
+  .stat-card,
+  .process-card,
+  .contact-card,
+  .portal-showcase-card,
+  .portal-focus-card,
+  .flyer-mockup,
+  .social-post-card,
+  .story-panel,
+  .outcome-panel,
+  .editorial-showcase {
+    padding: 22px;
+  }
+
+  .project-card p,
+  .project-card h3,
+  .project-card span {
+    margin-inline: 16px;
+  }
+
+  .project-card span {
+    margin-bottom: 20px;
+  }
+
+  .media-card img,
+  .final-screens img {
+    height: 260px;
+  }
+
+  .portal-focus-card {
+    min-height: 220px;
+  }
+
+  .portal-focus-card span {
+    margin-bottom: 34px;
+  }
+
+  .portal-showcase-grid {
+    gap: 24px;
+  }
+
+  .portal-showcase-card {
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .portal-card-heading h3 {
+    font-size: 1.45rem;
+    line-height: 1.12;
+  }
+
+  .portal-scroll-screen {
+    scrollbar-width: none;
+  }
+
+  .portal-scroll-screen::-webkit-scrollbar {
+    display: none;
+  }
+
+  .case-study-card {
+    min-height: 390px;
+    padding: 12px;
+  }
+
+  .brand-thumbnail {
+    padding: 28px;
+  }
+
+  .brand-thumbnail img {
+    width: min(80%, 230px);
+    max-height: 105px;
+    padding: 18px 22px;
+    border-radius: 14px;
+  }
+
+  .case-study-card-copy {
+    padding: 18px 4px 2px;
+  }
+
+  .case-study-card-copy h3 {
+    font-size: 2rem;
+  }
+
+  .approach-card {
+    min-height: 132px;
+    padding: 16px;
+  }
+
+  .approach-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .approach-icon svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .case-story-visual img,
+  .editorial-showcase img {
+    height: 300px;
+  }
+
+  .case-story-visual .page-mockup-browser {
+    max-height: 300px;
+  }
+
+  .comparison-mockup {
+    padding: 12px;
+  }
+
+  .comparison-pair {
+    gap: 18px;
+  }
+
+  .page-mockup-lid {
+    padding: 9px 9px 12px;
+    border-radius: 17px 17px 12px 12px;
+  }
+
+  .page-mockup-base {
+    height: 22px;
+  }
+
+  .page-mockup-bar,
+  .mockup-topbar {
+    min-height: 30px;
+    padding: 0 9px;
+  }
+
+  .page-mockup-bar p,
+  .mockup-topbar p {
+    max-width: 44%;
+    font-size: 0.64rem;
+  }
+
+  .before-after {
+    min-height: 320px;
+    border-radius: 12px;
+  }
+
+  .compare-label {
+    top: 12px;
+    font-size: 0.68rem;
+  }
+
+  .compare-label-before {
+    left: 12px;
+  }
+
+  .compare-label-after {
+    right: 12px;
+  }
+
+  .project-nav {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .flyer-showcase-grid {
+    gap: 18px;
+  }
+
+  .flyer-mockup {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .flyer-screen {
+    border-width: 7px;
+    border-radius: 14px;
+  }
+
+  .social-post-card {
+    padding: 16px;
+    border-radius: 18px;
+  }
+
+  .social-post-copy h3 {
+    font-size: 1.7rem;
+  }
+
+  .social-post-mockup {
+    border-radius: 18px;
+  }
+
+  .social-post-top {
+    min-height: 36px;
+    padding: 0 10px;
+  }
+
+  .social-post-arrow {
+    width: 32px;
+    height: 32px;
+    font-size: 1.08rem;
+  }
+
+  .social-post-arrow-prev {
+    left: 8px;
+  }
+
+  .social-post-arrow-next {
+    right: 8px;
+  }
+
+  .widget-demo-card {
+    padding: 12px;
+  }
+
+  .mockup-lid {
+    padding: 9px 9px 12px;
+    border-radius: 17px 17px 12px 12px;
+  }
+
+  .mockup-webpage {
+    padding: 8px;
+  }
+
+  .mockup-page-body {
+    grid-template-columns: 1fr;
+  }
+
+  .mockup-page-sidebar {
+    display: none;
+  }
+
+  .mockup-page-content {
+    padding: 7px;
+  }
+
+  .widget-preview-cards {
+    height: 180px;
+  }
+
+  .widget-preview-cards iframe {
+    transform: scale(0.26);
+  }
+
+  .widget-preview-slider {
+    height: 84px;
+  }
+
+  .widget-preview-slider iframe {
+    transform: scale(0.26);
+  }
+
+}
+
+@media (max-width: 420px) {
+  .hero-title,
+  .page-intro h1,
+  .case-story-copy h1 {
+    font-size: 2rem;
+  }
+
+  .section-heading h2,
+  .cta-panel h2,
+  .outcome-panel h2 {
+    font-size: 1.85rem;
+  }
+
+  .brand-thumbnail img {
+    width: 100%;
+  }
+
+  .skill-icon {
+    width: 34px;
+    height: 34px;
+  }
+
+  .skills-cloud .skill-chip,
+  .tool-chip.skill-chip {
+    padding: 10px 13px 10px 10px;
+  }
+
+  .widget-preview-cards {
+    height: 160px;
+  }
+
+  .widget-preview-cards iframe {
+    transform: scale(0.235);
+  }
+
+  .widget-preview-slider {
+    height: 74px;
+  }
+
+  .widget-preview-slider iframe {
+    transform: scale(0.235);
+  }
+}
+
+@media (hover: none) {
+  .project-card:hover,
+  .case-study-card:hover,
+  .service-card:hover,
+  .content-block:hover,
+  .process-card:hover,
+  .contact-card:hover,
+  .stat-card:hover,
+  .approach-card:hover,
+  .widget-demo-card:hover,
+  .flyer-mockup:hover,
+  .media-card:hover {
+    transform: none;
+  }
+
+  .project-card:hover img,
+  .case-study-card:hover .case-study-card-media img,
+  .case-study-card:hover .brand-thumbnail,
+  .case-study-card:hover .brand-thumbnail img,
+  .widget-demo-card:hover .mockup-lid,
+  .flyer-mockup:hover .flyer-screen img,
+  .media-card:hover img {
+    transform: none;
+  }
+}

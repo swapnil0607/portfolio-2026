@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: transparent;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            margin: 0px;
+        }
+
+        .widget-container {
+            width: 990px;
+            max-width: 990px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+
+        .tile {
+            background: white;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px -2px rgba(17, 24, 39, 0.05), 0 2px 4px -1px rgba(17, 24, 39, 0.03);
+            cursor: pointer;
+            height: 290px;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+            text-decoration: none;
+        }
+
+        .tile:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px -4px rgba(17, 24, 39, 0.12), 0 4px 8px -2px rgba(17, 24, 39, 0.06);
+            border-color: #1268b3;
+        }
+
+        /* Large Bottom Left Card */
+        .tile-double {
+            grid-column: span 2;
+            cursor: default;
+        }
+        
+        .tile-double:hover {
+            transform: none;
+            box-shadow: 0 4px 12px -2px rgba(17, 24, 39, 0.05), 0 2px 4px -1px rgba(17, 24, 39, 0.03);
+            border-color: #e5e7eb;
+        }
+
+        .image-container {
+            width: 100%;
+            height: 125px; 
+            overflow: hidden;
+            position: relative;
+        }
+
+        .tile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tile:hover .tile-image {
+            transform: scale(1.06);
+        }
+
+        .content {
+            padding: 20px 20px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            position: relative;
+        }
+
+        .title {
+            font-weight: 700;
+            font-size: 18px;
+            color: #111827;
+            margin-bottom: 4px;
+        }
+
+        .subtitle {
+            font-size: 12px;
+            color: #4b5563;
+            line-height: 18px;
+            padding-right: 20px;
+        }
+
+        .badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.85);
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        /* ---------------------------------------------------- */
+        /* EXPLORE NOW CTA BUTTON STYLE                         */
+        /* ---------------------------------------------------- */
+        .explore-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.75px;
+            color: #4b5563;
+            background: #f9fafb;
+            border: 1px solid #e5e7eb;
+            padding: 8px 16px;
+            border-radius: 8px;
+            margin-top: auto;
+            align-self: flex-start;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tile:hover .explore-btn {
+            background: #1268b3;
+            color: white;
+            border-color: #1268b3;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.2);
+            transform: translateY(-1px);
+        }
+
+        .explore-btn svg {
+            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .tile:hover .explore-btn svg {
+            transform: translateX(3px);
+            stroke: currentColor;
+        }
+
+        /* ---------------------------------------------------- */
+        /* PREMIUM CORPORATE VALUE BUTTONS WITH AFFORDANCE     */
+        /* ---------------------------------------------------- */
+        .value-btn-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .value-btn {
+            position: relative;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            color: #334155;
+            font-weight: 600;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            padding: 10px 4px;
+            border-radius: 10px;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+            text-decoration: none;
+        }
+
+        /* Breathing Pulse Dot before text */
+        .value-btn::before {
+            content: '';
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            display: inline-block;
+            transition: transform 0.25s ease;
+            animation: breathe 2s infinite ease-in-out;
+        }
+
+        @keyframes breathe {
+            0%, 100% { transform: scale(1); opacity: 0.8; box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2); }
+            50% { transform: scale(1.35); opacity: 1; box-shadow: 0 0 4px 1.5px rgba(0, 0, 0, 0.15); }
+        }
+
+        /* Horizontal Arrow Symbol Styles */
+        .btn-arrow {
+            font-size: 12px;
+            opacity: 0.4;
+            transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-block;
+            transform: translateX(0px);
+        }
+
+        .value-btn:hover .btn-arrow {
+            opacity: 1;
+            transform: translateX(4px); /* Moves horizontally to the right */
+        }
+
+        /* Integrity (Blue Motif) */
+        .btn-integrity::before { background-color: #1268b3; }
+        .btn-integrity:hover {
+            color: #1d4ed8;
+            background: #f0f5ff;
+            border-color: #93c5fd;
+            box-shadow: 0 4px 12px rgba(59, 130, 246, 0.15);
+        }
+        .btn-integrity:hover .btn-arrow { color: #1d4ed8; }
+
+        /* Unity (Purple Motif) */
+        .btn-unity::before { background-color: #8b5cf6; }
+        .btn-unity:hover {
+            color: #6d28d9;
+            background: #f5f3ff;
+            border-color: #c084fc;
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+        }
+        .btn-unity:hover .btn-arrow { color: #6d28d9; }
+
+        /* Pioneer (Amber/Orange Motif) */
+        .btn-pioneer::before { background-color: #f59e0b; }
+        .btn-pioneer:hover {
+            color: #b45309;
+            background: #fffbeb;
+            border-color: #fcd34d;
+            box-shadow: 0 4px 12px rgba(245, 158, 11, 0.15);
+        }
+        .btn-pioneer:hover .btn-arrow { color: #b45309; }
+
+        /* Passion (Red/Rose Motif) */
+        .btn-passion::before { background-color: #f43f5e; }
+        .btn-passion:hover {
+            color: #be123c;
+            background: #fff1f2;
+            border-color: #fecdd3;
+            box-shadow: 0 4px 12px rgba(244, 63, 94, 0.15);
+        }
+        .btn-passion:hover .btn-arrow { color: #be123c; }
+
+        /* Responsibility (Teal Motif) */
+        .btn-responsibility::before { background-color: #0d9488; }
+        .btn-responsibility:hover {
+            color: #0f766e;
+            background: #f0fdfa;
+            border-color: #99f6e4;
+            box-shadow: 0 4px 12px rgba(13, 148, 136, 0.15);
+        }
+        .btn-responsibility:hover .btn-arrow { color: #0f766e; }
+
+        .value-btn:hover {
+            transform: translateY(-2.5px);
+        }
+
+        .value-btn:hover::before {
+            animation: none; /* Stops pulsing so hover scaling feels highly controlled */
+            transform: scale(1.3);
+        }
+        
+    </style>
+</head>
+<body>
+
+    <div class="widget-container">
+        
+        <!-- Top 1st: Mindshift Friday -->
+        <div class="tile" target="_blank">
+            <span class="badge text-blue-600">Perspective</span>
+            <div class="image-container">
+                <img src="https://eduriserck.com/tata-steel/Portal-april-2025/5-widget/Mindshift-Friday.jpg?auto=format&fit=crop&q=80&w=400" alt="Mindshift Friday" class="tile-image" onerror="this.src='https://via.placeholder.com/400x200?text=Mindshift+Friday'">
+            </div>
+            <div class="content justify-between">
+                <div>
+                    <div class="title">Mindshift Friday</div>
+                    <div class="subtitle">Pause, reflect, and reframe your weekly performance mindset.</div>
+                </div>
+                <div class="explore-btn">
+                    <span>Explore Now</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top 2nd: Leaders Speak -->
+        <div class="tile" target="_blank">
+            <span class="badge text-amber-600">Insights</span>
+            <div class="image-container">
+                <img src="https://eduriserck.com/tata-steel/Portal-april-2025/5-widget/Leaders-Speak.jpg?auto=format&fit=crop&q=80&w=400" alt="Leaders Speak" class="tile-image" onerror="this.src='https://via.placeholder.com/400x200?text=Leaders+Speak'">
+            </div>
+            <div class="content justify-between">
+                <div>
+                    <div class="title">Leaders Speak</div>
+                    <div class="subtitle">Gain wisdom and strategic foresight directly from executive voices.</div>
+                </div>
+                <div class="explore-btn">
+                    <span>Explore Now</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top 3rd: AI Nexus -->
+        <div class="tile" target="_blank">
+            <span class="badge text-purple-600">Tech</span>
+            <div class="image-container">
+                <img src="https://eduriserck.com/tata-steel/Portal-april-2025/5-widget/AI-nexus-GIF.gif?auto=format&fit=crop&q=80&w=400" alt="Artificial Intelligence" class="tile-image" onerror="this.src='https://via.placeholder.com/400x200?text=AI+Nexus'">
+            </div>
+            <div class="content justify-between">
+                <div>
+                    <div class="title">AI Nexus</div>
+                    <div class="subtitle">Stay ahead with cutting-edge AI tools and workflows.</div>
+                </div>
+                <div class="explore-btn">
+                    <span>Explore Now</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Left: Values (Spans 2 columns) -->
+        <div class="tile tile-double">
+            <span class="badge text-emerald-600">Culture</span>
+            <div class="image-container">
+                <img src="https://eduriserck.com/tata-steel/Portal-april-2025/5-widget/Values.jpg?auto=format&fit=crop&q=80&w=700" alt="Core Values" class="tile-image" onerror="this.src='https://via.placeholder.com/700x300?text=Core+Values'">
+            </div>
+            <div class="content justify-between">
+                <div class="mb-2">
+                    <div class="title">Our Values</div>
+                    <div class="subtitle">Our values are so much more than a list of promises, they are built into the very DNA of our brand.</div>
+                </div>
+
+                <!-- Interactive Affordance Label -->
+                <div class="flex items-center gap-1.5 mb-2.5 text-[10px] font-bold text-slate-400 uppercase tracking-widest select-none">
+                    <span class="relative flex h-2 w-2">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                    </span>
+                    Select a value to explore
+                </div>
+                
+                <!-- Premium Customized Value Buttons -->
+                <div class="value-btn-grid">
+                    <div class="value-btn btn-integrity" target="_blank">
+                        <span>Integrity</span> <span class="btn-arrow">→</span>
+                    </div>
+                    <div class="value-btn btn-unity" target="_blank">
+                        <span>Unity</span> <span class="btn-arrow">→</span>
+                    </div>
+                    <div class="value-btn btn-pioneer" target="_blank">
+                        <span>Pioneer</span> <span class="btn-arrow">→</span>
+                    </div>
+                    <div class="value-btn btn-passion" target="_blank">
+                        <span>Passion</span> <span class="btn-arrow">→</span>
+                    </div>
+                    <div class="value-btn btn-responsibility" target="_blank">
+                        <span>Responsibility</span> <span class="btn-arrow">→</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Right: Learning Spotlight -->
+        <div class="tile" target="_blank">
+            <span class="badge text-rose-600">Growth</span>
+            <div class="image-container">
+                <img src="https://eduriserck.com/tata-steel/Portal-april-2025/5-widget/Learning-Spotlight.jpg?auto=format&fit=crop&q=80&w=400" alt="Learning Spotlight" class="tile-image" onerror="this.src='https://via.placeholder.com/400x200?text=Learning+Spotlight'">
+            </div>
+            <div class="content justify-between">
+                <div>
+                    <div class="title">Learning Spotlight</div>
+                    <div class="subtitle">Discover featured courses, skill updates, and high-impact paths.</div>
+                </div>
+                <div class="explore-btn">
+                    <span>Explore Now</span>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

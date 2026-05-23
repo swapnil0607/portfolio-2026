@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --taj-burgundy: #9E3039;
+            --taj-gold: #b38e5d;
+            --text-dark: #1a1a1a;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: transparent;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        /* Fixed container at 990px wide, 2-row grid */
+        .widget-container {
+            width: 990px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .hybrid-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+            height: 320px;
+            box-sizing: border-box;
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+            position: relative;
+        }
+
+        .hybrid-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 6px 12px rgba(99, 13, 22, 0.12);
+            border-color: rgba(99, 13, 22, 0.1);
+        }
+
+        /* Image Section */
+        .card-visual {
+            height: 125px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .hybrid-card:hover .card-visual img {
+            transform: scale(1.1);
+        }
+
+        .visual-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.1), rgba(0,0,0,0.4));
+        }
+
+        .glass-badge {
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 4px 10px;
+            border-radius: 6px;
+            color: white;
+            font-size: 9px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Content Section */
+        .card-body {
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .category-tag {
+            color: var(--taj-gold);
+            font-size: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 4px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 18px;
+            color: var(--text-dark);
+            line-height: 1.2;
+            margin-bottom: 6px;
+        }
+
+        .card-desc {
+            font-size: 12px;
+            color: #666;
+            line-height: 1.4;
+            margin-bottom: 12px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        /* Active button — has a link */
+        .btn-modern {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: white;
+            color: var(--text-dark);
+            border: 1.5px solid #e5e7eb;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+            width: fit-content;
+            margin-top: auto;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-modern svg {
+            width: 14px;
+            height: 14px;
+            transition: transform 0.3s ease;
+        }
+
+        .btn-modern:hover {
+            background-color: var(--taj-burgundy);
+            color: white;
+            border-color: var(--taj-burgundy);
+            transform: translateY(-1px);
+        }
+
+        .btn-modern:hover svg {
+            transform: translateX(3px);
+        }
+
+        /* Inactive button — no link */
+        .btn-modern-disabled {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background-color: #f5f5f5;
+            color: #b0b0b0;
+            border: 1.5px solid #e5e7eb;
+            padding: 8px 18px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            width: fit-content;
+            margin-top: auto;
+            cursor: not-allowed;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .btn-modern-disabled svg {
+            width: 14px;
+            height: 14px;
+            opacity: 0.4;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="widget-container">
+
+        <!-- 1. Safety -->
+        <div class="hybrid-card">
+            <div class="card-visual">
+                <img src="./ramp-safety.jpg" alt="Safety">
+                <div class="visual-overlay"></div>
+                <div class="glass-badge">Safety Theme</div>
+            </div>
+            <div class="card-body">
+                <span class="category-tag">Safety Focus</span>
+                <h2 class="card-title">TajSATS Safety</h2>
+                <p class="card-desc">Essential workplace safety protocols and best practices to ensure a secure environment for every team member.</p>
+                <button class="btn-modern" type="button" aria-disabled="true">
+                    Explore
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 2. Food Safety -->
+        <div class="hybrid-card">
+            <div class="card-visual">
+                <img src="./food-safety.jpg" alt="Food Safety">
+                <div class="visual-overlay"></div>
+                <div class="glass-badge">Core Training</div>
+            </div>
+            <div class="card-body">
+                <span class="category-tag">Safety Focus</span>
+                <h2 class="card-title">Food Safety Standards</h2>
+                <p class="card-desc">A structured professional path designed to master luxury airline service and operational excellence.</p>
+                <button class="btn-modern" type="button" aria-disabled="true">
+                    Explore
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 3. Internal SOP -->
+        <div class="hybrid-card">
+            <div class="card-visual">
+                <img src="./SOP.jpg" alt="Internal SOP">
+                <div class="visual-overlay"></div>
+                <div class="glass-badge">Operations</div>
+            </div>
+            <div class="card-body">
+                <span class="category-tag">Procedures</span>
+                <h2 class="card-title">Internal SOP</h2>
+                <p class="card-desc">Standardized operating procedures that define our operational excellence and consistency across all departments.</p>
+                <button class="btn-modern" type="button" aria-disabled="true">
+                    Explore
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 4. Compliance -->
+        <div class="hybrid-card">
+            <div class="card-visual">
+                <img src="./compliance.jpg" alt="Compliance">
+                <div class="visual-overlay"></div>
+                <div class="glass-badge">Regulatory</div>
+            </div>
+            <div class="card-body">
+                <span class="category-tag">Governance</span>
+                <h2 class="card-title">Compliance</h2>
+                <p class="card-desc">Stay aligned with industry regulations, internal policies, and statutory requirements to uphold the highest standards.</p>
+                <button class="btn-modern" type="button" aria-disabled="true">
+                    Explore
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 5. Behavioral Courses -->
+        <div class="hybrid-card">
+            <div class="card-visual">
+                <img src="./internal.jpg" alt="Behavioral Courses">
+                <div class="visual-overlay"></div>
+                <div class="glass-badge">Soft Skills</div>
+            </div>
+            <div class="card-body">
+                <span class="category-tag">Learning Theme</span>
+                <h2 class="card-title">Skills That Set You Apart</h2>
+                <p class="card-desc">Build interpersonal skills, emotional intelligence, and leadership competencies to thrive in a collaborative workplace.</p>
+                <button class="btn-modern" type="button" aria-disabled="true">
+                    Explore
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- 6. Digital & Finance -->
+        <div class="hybrid-card">
+            <div class="card-visual">
+                <img src="./Digital.jpg" alt="Digital & Finance">
+                <div class="visual-overlay"></div>
+                <div class="glass-badge">Tech & Financial Literacy</div> 
+            </div>
+            <div class="card-body">
+                <span class="category-tag">Insights Hub</span>
+                <h2 class="card-title">Digital & Financial Literacy</h2>
+                <p class="card-desc">Leverage digital tools and financial literacy to drive smarter decisions and operational efficiency across the business.</p>
+                 <button class="btn-modern" type="button" aria-disabled="true">
+                    Explore
+                    <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>

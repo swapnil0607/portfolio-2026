@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TajSATS Leader Speaks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --taj-gold: #C5A059;
+            --taj-gold-light: #E3C58B;
+            --taj-maroon: #54050a;
+            --taj-ivory: #F9F7F2;
+        }
+
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: transparent;
+            font-family: 'Montserrat', sans-serif;
+            overflow: hidden;
+        }
+
+        .widget-container {
+            width: 970px;
+            height: 320px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            background: var(--taj-maroon);
+            border: 1.5px solid rgba(197, 160, 89, 0.8);
+            border-radius: 4px;
+        }
+
+        .carousel-track {
+            display: flex;
+            height: 100%;
+            transition: transform 1.2s cubic-bezier(0.7, 0, 0.3, 1);
+        }
+
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .content-wrapper {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            padding: 0 80px;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 10;
+        }
+
+        .text-block {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            height: 100%;
+            margin-top: -15px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s cubic-bezier(0.2, 1, 0.3, 1) 0.4s;
+        }
+
+        .active .text-block {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .leader-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 46px;
+            line-height: 1.1;
+            margin-bottom: 8px;
+            color: var(--taj-gold);
+        }
+
+        .leader-designation {
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-size: 10px;
+            font-weight: 600;
+            margin-bottom: 22px;
+            color: var(--taj-gold-light);
+            display: block;
+        }
+
+        .leader-quote {
+            font-size: 0.9rem;
+            font-style: italic;
+            line-height: 1.5;
+            margin-bottom: 25px;
+            color: var(--taj-ivory);
+            opacity: 0.85;
+            border-left: 2px solid var(--taj-gold);
+            padding-left: 20px;
+            max-width: 450px;
+        }
+
+        .image-side {
+            flex: 0.8;
+            height: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+            position: relative;
+        }
+
+        .leader-img-container {
+            height: 98%;
+            width: auto;
+            opacity: 0;
+            transform: translateX(40px);
+            transition: all 1.2s cubic-bezier(0.2, 1, 0.3, 1) 0.2s;
+        }
+
+        .active .leader-img-container {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .leader-img {
+            height: 100%;
+            width: auto;
+            object-fit: contain;
+            mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+            -webkit-mask-image: linear-gradient(to bottom, black 88%, transparent 100%);
+        }
+
+        /* Dot Navigation */
+        .dot-navigation {
+            position: absolute;
+            bottom: 22px;
+            left: 80px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            z-index: 50;
+        }
+
+        .dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(197, 160, 89, 0.35);
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            transition: all 0.35s ease;
+            display: block;
+        }
+
+        .dot.active {
+            width: 24px;
+            border-radius: 3px;
+            background: var(--taj-gold);
+        }
+
+        .dot:hover:not(.active) {
+            background: rgba(197, 160, 89, 0.65);
+        }
+
+        @media (max-width: 768px) {
+            .widget-container { width: 970px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="widget-container" id="carousel">
+        <div class="carousel-track" id="track">
+
+            <!-- Slide 1 -->
+            <div class="carousel-slide active">
+                <div class="content-wrapper">
+                    <div class="text-block">
+                        <h2 class="leader-title">Manish Gupta</h2>
+                        <span class="leader-designation">Chief Executive Officer</span>
+                        <p class="leader-quote">"In a world that evolves daily, standing still is falling behind. Use the tools we’ve built for you—every skill you gain today is your advantage tomorrow."</p>
+                    </div>
+                    <div class="image-side">
+                        <div class="leader-img-container">
+                            <img src="./MANISH-GUPTA.png" alt="Manish Gupta" class="leader-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 2 -->
+           <div class="carousel-slide">
+                <div class="content-wrapper">
+                    <div class="text-block">
+                        <h2 class="leader-title">Ashwani Anand</h2>
+                        <span class="leader-designation">Vice President - Operations</span>
+                        <p class="leader-quote">"In a fast-moving market, agility is everything. Upskilling makes you—and us—ready for whatever comes next."</p>
+                    </div>
+                    <div class="image-side">
+                        <div class="leader-img-container">
+                            <img src="./Ashwani-Anand.png" alt="Ashwani Anand" class="leader-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Slide 3 -->
+            <div class="carousel-slide">
+                <div class="content-wrapper">
+                    <div class="text-block">
+                        <h2 class="leader-title">Rajeev Kumar</h2>
+                        <span class="leader-designation">Chief Human Resources Officer</span>
+                        <p class="leader-quote">"Every skill you sharpen today is a step toward resilience, relevance, and long-term success."</p>
+                    </div>
+                    <div class="image-side">
+                        <div class="leader-img-container">
+                            <img src="./Rajeev-Kumar.png" alt="Rajeev Kumar" class="leader-img">
+                        </div>
+                    </div>
+                </div>
+            </div> 
+
+            <!-- Slide 4 -->
+            <div class="carousel-slide">
+                <div class="content-wrapper">
+                    <div class="text-block">
+                        <h2 class="leader-title">Ajay Bhat</h2>
+                        <span class="leader-designation">Chief Financial Officer</span>
+                        <p class="leader-quote">"The smartest investment you can make is in yourself—every skill you build compounds your personal capital."</p>
+                    </div>
+                    <div class="image-side">
+                        <div class="leader-img-container">
+                            <img src="./Ajay-Bhat.png" alt="Ajay Bhat" class="leader-img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Dot Navigation -->
+        <div class="dot-navigation" id="dotNav"></div>
+    </div>
+
+    <script>
+        const track = document.getElementById('track');
+        const slides = document.querySelectorAll('.carousel-slide');
+        const dotNav = document.getElementById('dotNav');
+
+        let currentIndex = 0;
+        const total = slides.length;
+        let autoTimer;
+
+        // Build dots
+        slides.forEach(function(_, i) {
+            var dot = document.createElement('button');
+            dot.className = 'dot' + (i === 0 ? ' active' : '');
+            dot.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+            dot.addEventListener('click', function() {
+                currentIndex = i;
+                updateSlider();
+                startTimer();
+            });
+            dotNav.appendChild(dot);
+        });
+
+        function updateSlider() {
+            track.style.transform = 'translateX(-' + (currentIndex * 100) + '%)';
+            slides.forEach(function(slide, i) {
+                i === currentIndex ? slide.classList.add('active') : slide.classList.remove('active');
+            });
+            dotNav.querySelectorAll('.dot').forEach(function(dot, i) {
+                i === currentIndex ? dot.classList.add('active') : dot.classList.remove('active');
+            });
+        }
+
+        function goNext() { currentIndex = (currentIndex + 1) % total; updateSlider(); }
+        function startTimer() { clearInterval(autoTimer); autoTimer = setInterval(goNext, 6000); }
+
+        startTimer();
+    </script>
+</body>
+</html>

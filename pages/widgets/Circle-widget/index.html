@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Core Competency Framework</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght=300;400;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+
+        .segment {
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .segment:hover {
+            filter: brightness(1.12);
+            transform: scale(1.02);
+            transform-origin: center;
+        }
+
+        .wheel-container {
+            position: relative;
+            user-select: none;
+        }
+
+        .inner-circle {
+            fill: white;
+            filter: drop-shadow(0 4px 12px rgba(0,0,0,0.15));
+        }
+
+        .fade-in {
+            animation: fadeIn 0.3s ease-out forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #mcf-svg {
+            width: 100%;
+            height: auto;
+            max-width: 480px;
+            overflow: visible;
+            display: block;
+        }
+
+        .category-card {
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .category-card.active {
+            transform: translateX(8px);
+            border-left-width: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .segment-label {
+            font-size: 6.2px; 
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.01em;
+            fill: white;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-2 md:p-4">
+
+    <div class="w-[990px] max-w-full overflow-hidden flex flex-col p-6 md:p-8 gap-2">
+        
+        <div class="text-center max-w-3xl mx-auto space-y-1">
+            <h2 class="text-xl md:text-3xl font-extrabold text-slate-900 tracking-tight">
+                Circular Pie-chart
+                <span id="header-accent" class="text-slate-400 transition-colors duration-500 block md:inline">Widget</span>
+            </h2>
+            <p class="text-slate-500 text-[11px] max-w-lg mx-auto">
+                Our organizational capability map is split across three distinct behavioral clusters representing nine key professional areas.
+            </p>
+        </div>
+
+        <div class="flex flex-col md:flex-row gap-6 items-center">
+            
+            <div class="w-full md:w-5/12 flex flex-col space-y-3">
+                <div class="flex flex-col gap-2">
+                    <div id="card-results" class="category-card p-3 rounded-xl bg-emerald-50 border-l-4 border-emerald-500">
+                        <h4 class="font-bold text-emerald-800 text-[10px] flex items-center gap-2 mb-0.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> OUTCOME FOCUS
+                        </h4>
+                        <p class="text-[9px] text-emerald-700/80 leading-tight">These competencies capture our ability to act purposefully, satisfy strategic commitments, network efficiently, and implement solutions that continuously raise our delivery standards.</p>
+                    </div>
+                    <div id="card-business" class="category-card p-3 rounded-xl bg-blue-50 border-l-4 border-blue-500">
+                        <h4 class="font-bold text-blue-800 text-[10px] flex items-center gap-2 mb-0.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span> STRATEGIC ALIGNMENT
+                        </h4>
+                        <p class="text-[9px] text-blue-700/80 leading-tight">These components emphasize systemic thinking, assessing market patterns, balancing operational risk, and taking action backed by structural analysis.</p>
+                    </div>
+                    <div id="card-people" class="category-card p-3 rounded-xl bg-amber-50 border-l-4 border-amber-500">
+                        <h4 class="font-bold text-amber-800 text-[10px] flex items-center gap-2 mb-0.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span> HUMAN LEADERSHIP
+                        </h4>
+                        <p class="text-[9px] text-amber-700/80 leading-tight">Focused on cultivating exceptional team synergy, navigating organizational shift smoothly, and building growth loops for colleagues to secure our talent landscape.</p>
+                    </div>
+                </div>
+
+                <div id="info-box" class="relative rounded-xl bg-slate-900 text-white p-4 min-h-[140px] flex items-center shadow-lg transition-all duration-300">
+                    <div id="empty-state" class="w-full text-center text-slate-500">
+                        <p class="text-[8px] font-bold uppercase tracking-[0.2em]">Hover or tap a segment to view details</p>
+                    </div>
+                    <div id="content-state" class="hidden fade-in w-full">
+                        <span id="comp-category" class="text-[8px] font-black uppercase tracking-widest block mb-0.5"></span>
+                        <h3 id="comp-title" class="text-base font-bold text-white leading-tight"></h3>
+                        <p id="comp-desc" class="text-slate-300 text-[11px] mt-2 leading-relaxed"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full md:w-7/12 flex items-center justify-center wheel-container">
+                <svg id="mcf-svg" viewBox="0 0 400 400">
+                    <g id="segments-group"></g>
+                    <circle cx="200" cy="200" r="58" class="inner-circle" />
+                    <text x="200" y="198" text-anchor="middle" class="fill-slate-900 font-extrabold text-[14px]">OUR CORE</text>
+                    <text x="200" y="210" text-anchor="middle" class="fill-slate-400 font-bold text-[7px] tracking-[0.3em]">ABILITIES</text>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const icons = {
+            target: "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z",
+            zap: "M11.5 2H10v7h3.5v1.5h-5V12h4v1.5h-4V15H15v1.5H8.5c-.83 0-1.5-.67-1.5-1.5V3.5C7 2.67 7.67 2 8.5 2h3z",
+            check: "M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z",
+            briefcase: "M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-8 0h-4V4h4v2z",
+            trending: "M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z",
+            users: "M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z",
+            heart: "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z",
+            globe: "M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zm6.9 6h-2.95a15.65 15.65 0 0 0-1.38-3.56A8.03 8.03 0 0 1 18.89 8zM12 4.04c.83 1.2 1.48 2.53 1.91 3.96h-3.82c.43-1.43 1.08-2.76 1.91-3.96zM4.26 14C4.1 13.35 4 12.69 4 12s.1-1.35.26-2h3.38c-.08.66-.14 1.33-.14 2s.06 1.34.14 2H4.26zm.85 2h2.95c.32 1.25.8 2.45 1.38 3.56A7.987 7.987 0 0 1 5.11 16zm2.95-8H5.11a8.03 8.03 0 0 1 3.42-3.56A15.65 15.65 0 0 0 7.15 8zm4.85 11.96c-.83-1.2-1.48-2.53-1.91-3.96h3.82c-.43 1.43-1.08 2.76-1.91 3.96zM14.34 14H9.66c-.09-.66-.16-1.34-.16-2s.07-1.34.16-2h4.68c.09.66.16 1.34.16 2s-.07 1.34-.16 2zm.25 5.56c.58-1.11 1.06-2.31 1.38-3.56h2.95a7.987 7.987 0 0 1-4.33 3.56zM16.36 14c.08-.66.14-1.33.14-2s-.06-1.34-.14-2h3.38c.16.65.26 1.31.26 2s-.1 1.35-.26 2h-3.38z"
+        };
+
+        const frameworkData = [
+            { category: 'Results', title: 'Drive for Results', desc: 'Strategizing and executing operational goals resiliently. This segment values dedication, reliable ownership of tasks, and keeping high quality benchmarks across all key activities.', color: '#005A59', icon: icons.target },
+            { category: 'Results', title: 'User Orientation', desc: 'Anticipating and resolving client or customer requirements with care. Emphasizes establishing solid pathways of feedback to continuously improve overall value.', color: '#287271', icon: icons.heart },
+            { category: 'Results', title: 'Strategic Relations', desc: 'Building dynamic and cohesive alignments with key stakeholders. Expresses our commitment to clear communication, collective brainstorming, and building operational trust.', color: '#298880', icon: icons.globe },
+            { category: 'Results', title: 'Learning & Innovation', desc: 'Translating knowledge into continuous process improvement. Supports the active experimentation with new workflows, modern frameworks, and strategic skill updates.', color: '#2a9d8f', icon: icons.zap },
+            { category: 'Business', title: 'Business Acumen', desc: 'Interpreting industry developments, analyzing market variables, and mapping operations directly to long-term patterns for maximum performance.', color: '#1B60DE', icon: icons.briefcase },
+            { category: 'Business', title: 'Decision Making', desc: 'Evaluating complex system variables clearly. Highlights balanced logic, identifying potential challenges early, and keeping operations running smoothly.', color: '#5284E1', icon: icons.check },
+            { category: 'People', title: 'Synergy & Collaboration', desc: 'Fostering cohesive, transparent team environments. Focuses on constructive cross-functional cooperation and supporting shared initiatives.', color: '#e9c46a', icon: icons.users },
+            { category: 'People', title: 'Change Orientation', desc: 'Adapting proactively to shifting priorities and workplace environments with a flexible, agile mindset that views evolution as progress.', color: '#edb166', icon: icons.trending },
+            { category: 'People', title: 'Coaching & Mentoring', desc: 'Nurturing talent development through active learning paths. Highlights knowledge sharing to secure our future professional growth structures.', color: '#f4a261', icon: icons.users }
+        ];
+
+        function createWheel() {
+            const svgGroup = document.getElementById('segments-group');
+            if (!svgGroup) return;
+            svgGroup.innerHTML = ''; 
+            
+            const centerX = 200, centerY = 200, radius = 185, innerRadius = 70;
+            const total = frameworkData.length;
+            const anglePerSegment = 360 / total;
+
+            frameworkData.forEach((comp, i) => {
+                const startAngle = i * anglePerSegment - 90;
+                const endAngle = (i + 1) * anglePerSegment - 90;
+                const midAngle = (startAngle + endAngle) / 2;
+                
+                const radStart = Math.PI * startAngle / 180;
+                const radEnd = Math.PI * endAngle / 180;
+                
+                const x1 = centerX + radius * Math.cos(radStart);
+                const y1 = centerY + radius * Math.sin(radStart);
+                const x2 = centerX + radius * Math.cos(radEnd);
+                const y2 = centerY + radius * Math.sin(radEnd);
+                const x3 = centerX + innerRadius * Math.cos(radEnd);
+                const y3 = centerY + innerRadius * Math.sin(radEnd);
+                const x4 = centerX + innerRadius * Math.cos(radStart);
+                const y4 = centerY + innerRadius * Math.sin(radStart);
+
+                const d = `M ${x1} ${y1} A ${radius} ${radius} 0 0 1 ${x2} ${y2} L ${x3} ${y3} A ${innerRadius} ${innerRadius} 0 0 0 ${x4} ${y4} Z`;
+
+                const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                path.setAttribute("d", d);
+                path.setAttribute("fill", comp.color);
+                path.setAttribute("class", "segment");
+                path.setAttribute("stroke", "white");
+                path.setAttribute("stroke-width", "2");
+                
+                // Triggers information preview strictly (no page redirection on hover/tap)
+                path.addEventListener('mouseenter', () => showInfo(comp));
+                path.addEventListener('click', () => showInfo(comp));
+                
+                svgGroup.appendChild(path);
+
+                const contentRadius = (radius + innerRadius) / 2 - 2;
+                const cx = centerX + contentRadius * Math.cos(Math.PI * midAngle / 180);
+                const cy = centerY + contentRadius * Math.sin(Math.PI * midAngle / 180);
+
+                const group = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                group.setAttribute("class", "pointer-events-none");
+                
+                const iconGroup = document.createElementNS("http://www.w3.org/2000/svg", "g");
+                iconGroup.setAttribute("transform", `translate(${cx - 8}, ${cy - 24}) scale(0.65)`);
+                const iconPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
+                iconPath.setAttribute("d", comp.icon);
+                iconPath.setAttribute("fill", "white");
+                iconGroup.appendChild(iconPath);
+                group.appendChild(iconGroup);
+
+                const text = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                text.setAttribute("x", cx);
+                text.setAttribute("y", cy + 4); 
+                text.setAttribute("text-anchor", "middle");
+                text.setAttribute("class", "segment-label");
+                
+                const words = comp.title.split(' ');
+                
+                if (words.length >= 4 || comp.title.length > 25) {
+                    let lines = [];
+                    if (words.length === 4) {
+                        lines = [words[0], words[1] + " " + words[2], words[3]];
+                    } else {
+                        const perLine = Math.ceil(words.length / 3);
+                        lines = [
+                            words.slice(0, perLine).join(' '),
+                            words.slice(perLine, perLine * 2).join(' '),
+                            words.slice(perLine * 2).join(' ')
+                        ];
+                    }
+
+                    lines.forEach((txt, idx) => {
+                        const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+                        tspan.setAttribute("x", cx);
+                        tspan.setAttribute("dy", idx === 0 ? "0" : "7.5");
+                        tspan.textContent = txt;
+                        text.appendChild(tspan);
+                    });
+                } else if (words.length >= 2) {
+                    const mid = Math.ceil(words.length / 2);
+                    const lines = [words.slice(0, mid).join(' '), words.slice(mid).join(' ')];
+                    lines.forEach((txt, idx) => {
+                        const tspan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+                        tspan.setAttribute("x", cx);
+                        tspan.setAttribute("dy", idx === 0 ? "4" : "7.5");
+                        tspan.textContent = txt;
+                        text.appendChild(tspan);
+                    });
+                } else {
+                    text.textContent = comp.title;
+                    text.setAttribute("y", cy + 10);
+                }
+                
+                group.appendChild(text);
+                svgGroup.appendChild(group);
+            });
+        }
+
+        function showInfo(comp) {
+            document.getElementById('empty-state').classList.add('hidden');
+            const contentState = document.getElementById('content-state');
+            contentState.classList.remove('hidden');
+            
+            const catLabel = document.getElementById('comp-category');
+            catLabel.textContent = `Behavioral Cluster: ${comp.category}`;
+            catLabel.style.color = comp.color;
+            
+            document.getElementById('comp-title').textContent = comp.title;
+            document.getElementById('comp-desc').textContent = comp.desc;
+            document.getElementById('header-accent').style.color = comp.color;
+
+            document.querySelectorAll('.category-card').forEach(c => c.classList.remove('active'));
+            const activeCard = document.getElementById(`card-${comp.category.toLowerCase()}`);
+            if (activeCard) activeCard.classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', createWheel);
+    </script>
+</body>
+</html>
