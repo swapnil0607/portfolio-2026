@@ -364,9 +364,8 @@ button {
   width: 100%;
   height: min(62vh, 560px);
   min-height: 390px;
-  object-fit: contain;
-  object-position: center bottom;
-  background: rgba(6, 14, 31, 0.72);
+  object-fit: cover;
+  object-position: center;
   border-radius: var(--radius);
   transition: transform 520ms ease;
 }
