@@ -395,6 +395,44 @@ button {
   font-size: 0.86rem;
 }
 
+.hero-tags {
+  width: min(100%, 430px);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.hero-tags span,
+.hero-tags a {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  background: var(--glass);
+  color: var(--muted);
+  font-size: 0.84rem;
+  transition: transform 220ms ease, border-color 220ms ease, background 220ms ease, color 220ms ease;
+}
+
+.hero-tags a {
+  border-color: transparent;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.hero-tags span:hover,
+.hero-tags a:hover {
+  transform: translateY(-3px);
+  border-color: rgba(34, 211, 238, 0.42);
+  background: rgba(34, 211, 238, 0.1);
+  color: var(--text);
+}
+
 .orb {
   position: absolute;
   border-radius: 999px;
@@ -500,6 +538,212 @@ h2 {
 
 .text-link:hover {
   transform: translateX(5px);
+}
+
+.skillset-journey {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 15% 8%, rgba(79, 70, 229, 0.16), transparent 34%),
+    radial-gradient(circle at 88% 22%, rgba(34, 211, 238, 0.11), transparent 30%),
+    linear-gradient(180deg, rgba(5, 8, 22, 0.08), rgba(5, 8, 22, 0.44));
+}
+
+.skillset-journey::before,
+.skillset-journey::after {
+  display: none;
+}
+
+.journey-heading {
+  position: relative;
+  z-index: 1;
+}
+
+.journey-heading h2 {
+  max-width: 760px;
+  font-size: clamp(1.85rem, 2.85vw, 2.85rem);
+  line-height: 1.12;
+}
+
+.journey-heading span {
+  color: var(--primary);
+}
+
+.journey-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+  gap: 24px;
+  align-items: start;
+  margin-top: 38px;
+}
+
+.journey-column-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 30px;
+}
+
+.journey-title-icon {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  flex: 0 0 auto;
+  border: 1px solid rgba(34, 211, 238, 0.24);
+  border-radius: 12px;
+  background: linear-gradient(145deg, rgba(34, 211, 238, 0.14), rgba(255, 255, 255, 0.045));
+  color: var(--primary);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.journey-column-title h3 {
+  font-family: var(--font-display);
+  font-size: 1.16rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.journey-column {
+  min-height: 100%;
+  padding: clamp(24px, 3vw, 34px);
+  border: 1px solid var(--glass-border);
+  border-radius: var(--radius);
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.07), rgba(255, 255, 255, 0.025));
+  box-shadow: var(--shadow);
+}
+
+.experience-timeline {
+  position: relative;
+  display: grid;
+  gap: 30px;
+}
+
+.experience-item {
+  position: relative;
+  padding-left: 34px;
+}
+
+.experience-item::before {
+  position: absolute;
+  top: 7px;
+  left: 1px;
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: var(--primary);
+  box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.1);
+  content: "";
+}
+
+.experience-item::after {
+  position: absolute;
+  top: 21px;
+  bottom: -30px;
+  left: 5px;
+  width: 1px;
+  background: linear-gradient(180deg, rgba(34, 211, 238, 0.72), rgba(34, 211, 238, 0.08));
+  content: "";
+}
+
+.experience-item:last-child::after {
+  display: none;
+}
+
+.experience-item h4 {
+  margin-bottom: 6px;
+  font-family: var(--font-display);
+  font-size: 1.14rem;
+  line-height: 1.18;
+}
+
+.experience-item .company {
+  margin-bottom: 7px;
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.experience-item .duration {
+  margin-bottom: 18px;
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 700;
+}
+
+.experience-item p:last-child {
+  max-width: 620px;
+  color: var(--muted);
+  font-size: 0.96rem;
+  line-height: 1.78;
+}
+
+.skill-meter-list {
+  display: grid;
+  gap: 30px;
+}
+
+.skill-meter {
+  display: grid;
+  grid-template-columns: 40px minmax(0, 1fr);
+  gap: 16px;
+  align-items: center;
+}
+
+.skill-badge {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  border-radius: 8px;
+  border: 1px solid rgba(34, 211, 238, 0.24);
+  background: linear-gradient(145deg, rgba(34, 211, 238, 0.16), rgba(255, 255, 255, 0.05));
+  color: var(--primary);
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 800;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.skill-meter-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 8px;
+}
+
+.skill-meter-top span {
+  color: var(--text);
+  font-size: 1rem;
+}
+
+.skill-meter-top strong {
+  color: var(--muted);
+  font-size: 0.94rem;
+  font-weight: 500;
+}
+
+.skill-bar {
+  position: relative;
+  display: block;
+  height: 5px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.skill-bar span {
+  display: block;
+  width: var(--level);
+  height: 100%;
+  border-radius: inherit;
+  background: linear-gradient(90deg, var(--primary), var(--secondary));
+  box-shadow: 0 0 22px rgba(34, 211, 238, 0.32);
 }
 
 .section-heading {
@@ -871,6 +1115,10 @@ h2 {
 
 .cta-panel h2 {
   margin: 0 auto 30px;
+}
+
+.cta-panel .hero-actions {
+  justify-content: center;
 }
 
 .site-footer {
@@ -1513,7 +1761,7 @@ h2 {
 }
 
 .case-story-hero {
-  padding: 142px 0 78px;
+  padding: 132px 0 44px;
 }
 
 .case-story-grid {
@@ -1669,6 +1917,27 @@ h2 {
   gap: 22px;
 }
 
+.case-impact {
+  padding-top: 34px;
+}
+
+.case-impact .section-heading {
+  margin-bottom: 28px;
+}
+
+.case-evidence {
+  padding-top: 54px;
+  padding-bottom: 40px;
+}
+
+.case-method {
+  padding-top: 40px;
+}
+
+.case-method .section-heading {
+  margin-bottom: 26px;
+}
+
 .story-panel {
   padding: 30px;
   border-color: rgba(var(--case-accent-rgb), 0.16);
@@ -1686,7 +1955,7 @@ h2 {
 .approach-grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 14px;
+  gap: 12px;
 }
 
 .approach-card {

@@ -56,6 +56,7 @@
 
   .hero-visual,
   .portrait-card,
+  .hero-tags,
   .widget-demo-copy {
     width: 100%;
   }
@@ -70,6 +71,17 @@
   .services-grid,
   .case-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .journey-grid {
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  .hero-tags {
+    max-width: 520px;
+    justify-content: center;
+    margin-inline: auto;
   }
 
   .approach-grid {
@@ -174,6 +186,11 @@
     justify-content: flex-start;
   }
 
+  .hero-tags {
+    justify-content: flex-start;
+    margin-inline: 0;
+  }
+
   .portrait-card img {
     height: auto;
     max-height: 430px;
@@ -189,6 +206,7 @@
   .content-grid,
   .case-grid,
   .stat-grid,
+  .journey-grid,
   .portal-focus-grid,
   .flyer-showcase-grid,
   .case-story-grid,
@@ -202,11 +220,29 @@
   }
 
   .case-story-hero {
-    padding: 118px 0 54px;
+    padding: 110px 0 30px;
   }
 
   .case-story-copy h1 {
     font-size: clamp(2.35rem, 8vw, 4.2rem);
+  }
+
+  .case-impact {
+    padding-top: 26px;
+  }
+
+  .case-evidence {
+    padding-top: 42px;
+    padding-bottom: 28px;
+  }
+
+  .case-method {
+    padding-top: 28px;
+  }
+
+  .case-impact .section-heading,
+  .case-method .section-heading {
+    margin-bottom: 22px;
   }
 
   .case-story-visual img,
@@ -380,6 +416,75 @@
     width: 100%;
   }
 
+  .hero-tags {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+
+  .hero-tags span,
+  .hero-tags a {
+    min-height: 38px;
+    padding: 0 10px;
+    font-size: 0.82rem;
+  }
+
+  .journey-column-title {
+    gap: 12px;
+    margin-bottom: 26px;
+  }
+
+  .journey-title-icon {
+    width: 40px;
+    height: 40px;
+    font-size: 0.68rem;
+  }
+
+  .journey-column-title h3 {
+    font-size: 1rem;
+    letter-spacing: 0;
+  }
+
+  .experience-timeline {
+    gap: 26px;
+  }
+
+  .experience-item {
+    padding-left: 30px;
+  }
+
+  .experience-item::after {
+    bottom: -26px;
+  }
+
+  .experience-item h4 {
+    font-size: 1.1rem;
+  }
+
+  .experience-item .duration {
+    margin-bottom: 12px;
+  }
+
+  .skill-meter-list {
+    gap: 22px;
+  }
+
+  .skill-meter {
+    grid-template-columns: 36px minmax(0, 1fr);
+    gap: 14px;
+  }
+
+  .skill-badge {
+    width: 36px;
+    height: 36px;
+    font-size: 0.96rem;
+  }
+
+  .skill-meter-top span,
+  .skill-meter-top strong {
+    font-size: 0.88rem;
+  }
+
   .filter-row {
     width: calc(100vw - 28px);
     flex-wrap: nowrap;
@@ -518,7 +623,7 @@
   }
 
   .approach-card {
-    min-height: 132px;
+    min-height: 116px;
     padding: 16px;
   }
 
@@ -548,6 +653,21 @@
 
   .comparison-pair {
     gap: 18px;
+  }
+
+  .case-method .approach-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .case-method .approach-card {
+    min-height: 122px;
+    padding: 14px;
+    gap: 18px;
+  }
+
+  .case-method .approach-card span:last-child {
+    font-size: 0.84rem;
+    line-height: 1.35;
   }
 
   .page-mockup-lid {
@@ -738,7 +858,9 @@
   .approach-card:hover,
   .widget-demo-card:hover,
   .flyer-mockup:hover,
-  .media-card:hover {
+  .media-card:hover,
+  .hero-tags span:hover,
+  .hero-tags a:hover {
     transform: none;
   }
 
