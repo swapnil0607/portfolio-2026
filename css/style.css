@@ -2244,6 +2244,138 @@ h2 {
   border-top: 1px solid var(--glass-border);
 }
 
+.logofolio-page {
+  background:
+    radial-gradient(circle at 12% 8%, rgba(34, 211, 238, 0.12), transparent 28%),
+    radial-gradient(circle at 86% 16%, rgba(79, 70, 229, 0.18), transparent 34%);
+}
+
+.logofolio-hero {
+  padding: 150px 0 56px;
+  text-align: center;
+}
+
+.logofolio-hero-inner {
+  max-width: 840px;
+}
+
+.logofolio-hero h1 {
+  margin: 10px 0 22px;
+  font-family: var(--font-display);
+  font-size: clamp(3.2rem, 8vw, 7.4rem);
+  line-height: 0.92;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.logofolio-hero p:not(.eyebrow) {
+  max-width: 620px;
+  margin: 0 auto;
+  color: var(--muted);
+  font-size: 1.06rem;
+  line-height: 1.75;
+}
+
+.logofolio-glimpse {
+  padding: 20px 0 92px;
+}
+
+.logofolio-grid {
+  --logofolio-gap: clamp(42px, 6vw, 82px);
+  --logofolio-half-gap: clamp(21px, 3vw, 41px);
+  position: relative;
+  overflow: hidden;
+  padding: clamp(24px, 4vw, 40px);
+  border-radius: var(--radius);
+  mask-image: linear-gradient(90deg, transparent, #000 10%, #000 90%, transparent);
+}
+
+.logofolio-marquee-track {
+  width: max-content;
+  display: flex;
+  align-items: center;
+  gap: var(--logofolio-gap);
+  transform: translate3d(0, 0, 0);
+  will-change: transform;
+}
+
+.logofolio-marquee-set {
+  display: flex;
+  align-items: center;
+  gap: var(--logofolio-gap);
+  flex: 0 0 auto;
+}
+
+.logofolio-marquee-set img {
+  flex: 0 0 auto;
+  width: auto;
+  height: clamp(24px, 4vw, 38px);
+  filter: brightness(0) invert(1);
+  opacity: 0.68;
+}
+
+.logofolio-stack-section {
+  padding: 0 0 34px;
+}
+
+.logofolio-stack {
+  display: grid;
+  gap: 18px;
+}
+
+.logofolio-item {
+  position: relative;
+  min-height: 250px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  padding: clamp(42px, 7vw, 82px) 24px;
+  border-radius: var(--radius);
+  background:
+    radial-gradient(circle at 50% 0%, rgba(34, 211, 238, 0.09), transparent 42%),
+    linear-gradient(145deg, rgba(255, 255, 255, 0.065), rgba(255, 255, 255, 0.022));
+}
+
+.logofolio-item::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: min(430px, calc(100% - 56px));
+  height: min(170px, calc(100% - 56px));
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.3), 0 0 34px rgba(34, 211, 238, 0.12);
+  content: "";
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.96);
+  transition: opacity 360ms ease, transform 420ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.logofolio-item img {
+  position: relative;
+  z-index: 1;
+  width: min(260px, 68%);
+  max-height: 128px;
+  object-fit: contain;
+  filter: brightness(0) invert(1);
+  opacity: 0.9;
+  cursor: pointer;
+  transition: filter 420ms ease, opacity 320ms ease, transform 420ms ease;
+}
+
+.logofolio-item:hover::before {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.logofolio-item:hover img {
+  filter: none;
+  opacity: 1;
+  transform: scale(1.055);
+}
+
 .widget-showcase {
   display: grid;
   gap: 22px;

@@ -330,6 +330,18 @@
   .project-nav {
     flex-wrap: wrap;
   }
+
+  .logofolio-hero {
+    padding: 118px 0 42px;
+  }
+
+  .logofolio-glimpse {
+    padding-bottom: 72px;
+  }
+
+  .logofolio-item {
+    min-height: 210px;
+  }
 }
 
 @media (max-width: 576px) {
@@ -713,6 +725,34 @@
   .project-nav {
     align-items: stretch;
     flex-direction: column;
+  }
+
+  .logofolio-hero {
+    padding: 96px 0 34px;
+    text-align: left;
+  }
+
+  .logofolio-hero p:not(.eyebrow) {
+    margin-left: 0;
+  }
+
+  .logofolio-marquee-set img {
+    height: 24px;
+  }
+
+  .logofolio-grid {
+    --logofolio-gap: 40px;
+    --logofolio-half-gap: 20px;
+  }
+
+  .logofolio-item {
+    min-height: 170px;
+    padding: 36px 18px;
+  }
+
+  .logofolio-item img {
+    width: min(250px, 82%);
+    max-height: 105px;
   }
 
   .flyer-showcase-grid {
