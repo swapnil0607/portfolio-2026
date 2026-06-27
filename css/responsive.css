@@ -35,7 +35,10 @@
   .case-story-grid,
   .case-story-panels,
   .editorial-showcase,
-  .widget-demo-card {
+  .widget-demo-card,
+  .print-hero-grid,
+  .print-feature-grid,
+  .print-process-panel {
     grid-template-columns: 1fr;
   }
 
@@ -89,8 +92,21 @@
   }
 
   .portal-focus-grid,
-  .flyer-showcase-grid {
+  .flyer-showcase-grid,
+  .print-gallery {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .print-hero {
+    padding: 118px 0 54px;
+  }
+
+  .print-hero-spread {
+    min-height: 480px;
+  }
+
+  .print-pdf-card {
+    grid-template-columns: 1fr;
   }
 
   .widget-demo-card {
@@ -216,7 +232,12 @@
   .comparison-pair,
   .editorial-showcase,
   .widget-demo-card,
-  .final-screens {
+  .final-screens,
+  .print-hero-grid,
+  .print-feature-grid,
+  .print-gallery,
+  .print-process-panel,
+  .print-process-list {
     grid-template-columns: 1fr;
   }
 
@@ -226,6 +247,22 @@
 
   .case-story-copy h1 {
     font-size: clamp(2.35rem, 8vw, 4.2rem);
+  }
+
+  .print-hero {
+    padding: 104px 0 34px;
+  }
+
+  .print-hero-copy h1 {
+    font-size: clamp(2.35rem, 8vw, 4.2rem);
+  }
+
+  .print-hero-spread {
+    min-height: 430px;
+  }
+
+  .paper-preview {
+    width: min(62%, 300px);
   }
 
   .case-impact {
@@ -554,7 +591,9 @@
   .social-post-card,
   .story-panel,
   .outcome-panel,
-  .editorial-showcase {
+  .editorial-showcase,
+  .print-pdf-card,
+  .print-process-panel {
     padding: 22px;
   }
 
@@ -676,6 +715,56 @@
     min-height: 122px;
     padding: 14px;
     gap: 18px;
+  }
+
+  .print-hero {
+    padding: 88px 0 24px;
+  }
+
+  .print-hero-copy h1 {
+    font-size: 2.16rem;
+    line-height: 1.08;
+  }
+
+  .print-hero-copy > p:not(.eyebrow) {
+    font-size: 0.98rem;
+    line-height: 1.62;
+  }
+
+  .print-hero .role-chips {
+    margin-top: 20px;
+  }
+
+  .print-hero-spread {
+    min-height: 290px;
+  }
+
+  .paper-preview {
+    padding: 7px;
+  }
+
+  .paper-preview-back {
+    left: 2%;
+  }
+
+  .paper-preview-front {
+    right: 2%;
+  }
+
+  .paper-stack {
+    min-height: 180px;
+  }
+
+  .print-gallery {
+    gap: 18px;
+  }
+
+  .print-sheet {
+    padding: 10px;
+  }
+
+  .print-sheet figcaption {
+    font-size: 0.86rem;
   }
 
   .case-method .approach-card span:last-child {
