@@ -6,6 +6,12 @@ if (!window.location.hash && window.scrollY > 0) {
   window.scrollTo(0, 0);
 }
 
+window.addEventListener("pageshow", (event) => {
+  if (!window.location.hash) {
+    window.scrollTo(0, 0);
+  }
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   const body = document.body;
   const header = document.querySelector("[data-header]");
