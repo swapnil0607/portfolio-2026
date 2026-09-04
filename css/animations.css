@@ -36,41 +36,43 @@
   animation-delay: 180ms;
 }
 
-.reveal,
-.project-card,
-.case-study-card,
-.service-card,
-.process-card,
-.content-block,
-.timeline-item,
-.stat-card,
-.approach-card,
-.flyer-mockup,
-.social-post-card,
-.widget-demo-card,
-.portal-showcase-card {
-  opacity: 0;
-  transform: translate3d(0, 24px, 0);
-  transition:
-    opacity 680ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
-    transform 680ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
-}
+@media (min-width: 769px) {
+  .reveal,
+  .project-card,
+  .case-study-card,
+  .service-card,
+  .process-card,
+  .content-block,
+  .timeline-item,
+  .stat-card,
+  .approach-card,
+  .flyer-mockup,
+  .social-post-card,
+  .widget-demo-card,
+  .portal-showcase-card {
+    opacity: 0;
+    transform: translate3d(0, 24px, 0);
+    transition:
+      opacity 600ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+      transform 600ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
+  }
 
-.reveal.is-visible,
-.project-card.is-visible,
-.case-study-card.is-visible,
-.service-card.is-visible,
-.process-card.is-visible,
-.content-block.is-visible,
-.timeline-item.is-visible,
-.stat-card.is-visible,
-.approach-card.is-visible,
-.flyer-mockup.is-visible,
-.social-post-card.is-visible,
-.widget-demo-card.is-visible,
-.portal-showcase-card.is-visible {
-  opacity: 1;
-  transform: translate3d(0, 0, 0);
+  .reveal.is-visible,
+  .project-card.is-visible,
+  .case-study-card.is-visible,
+  .service-card.is-visible,
+  .process-card.is-visible,
+  .content-block.is-visible,
+  .timeline-item.is-visible,
+  .stat-card.is-visible,
+  .approach-card.is-visible,
+  .flyer-mockup.is-visible,
+  .social-post-card.is-visible,
+  .widget-demo-card.is-visible,
+  .portal-showcase-card.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
 }
 
 .project-card.has-revealed,
@@ -119,6 +121,12 @@
 }
 
 @media (max-width: 768px) {
+  .hero-item {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   .reveal,
   .project-card,
   .case-study-card,
@@ -132,10 +140,9 @@
   .social-post-card,
   .widget-demo-card,
   .portal-showcase-card {
-    transform: translate3d(0, 10px, 0);
-    transition:
-      opacity 320ms ease var(--reveal-delay, 0ms),
-      transform 320ms ease var(--reveal-delay, 0ms);
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
   }
 
   [data-parallax] {

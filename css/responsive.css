@@ -467,6 +467,7 @@
   }
 
   body {
+    background-color: #030614;
     background:
       radial-gradient(circle at 0% 7%, rgba(79, 70, 229, 0.28), transparent 32%),
       radial-gradient(circle at 100% 20%, rgba(34, 211, 238, 0.12), transparent 28%),

@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 720);
   };
 
-  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+  if (isTouchViewport || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
     animatedItems.forEach((item) => {
       item.classList.add("is-visible", "has-revealed");
       item.style.removeProperty("--reveal-delay");
