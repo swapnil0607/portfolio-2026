@@ -1,20 +1,50 @@
 @media (max-width: 992px) {
   :root {
-    --nav-height: 70px;
+    --nav-height: 58px;
   }
 
   html {
-    scroll-padding-top: calc(var(--nav-height) + 16px);
+    scroll-padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 16px);
   }
 
   .site-header {
-    padding: 10px 0;
-    padding-top: max(10px, env(safe-area-inset-top));
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 1000 !important;
+    padding: 0 !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+    background: rgba(4, 7, 18, 0.9) !important;
+    backdrop-filter: blur(20px) !important;
+    -webkit-backdrop-filter: blur(20px) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
+    -webkit-transform: translateZ(0) !important;
+    transform: translateZ(0) !important;
+    transition: background 0.25s ease !important;
   }
 
-  .nav-shell {
-    min-height: 54px;
-    padding: 5px 8px 5px 20px;
+  .site-header.is-scrolled {
+    padding: 0 !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
+    background: rgba(3, 6, 16, 0.98) !important;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5) !important;
+  }
+
+  .site-header .nav-shell {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: var(--nav-height) !important;
+    height: var(--nav-height) !important;
+    padding: 0 20px !important;
+    border: none !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    box-shadow: none !important;
+    margin: 0 !important;
   }
 
   .desktop-nav {
@@ -27,9 +57,9 @@
 
   .mobile-nav {
     display: flex;
-    top: var(--nav-height);
-    height: calc(100vh - var(--nav-height));
-    height: calc(100dvh - var(--nav-height));
+    top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
+    height: calc(100vh - (var(--nav-height) + env(safe-area-inset-top, 0px)));
+    height: calc(100dvh - (var(--nav-height) + env(safe-area-inset-top, 0px)));
     bottom: 0;
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -69,10 +99,9 @@
     box-shadow: 0 14px 36px -6px rgba(0, 0, 0, 0.5), var(--apple-rim-subtle);
   }
 
-  .site-header .nav-shell,
   .mobile-nav {
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
   }
 
   .orb-one,
@@ -81,7 +110,7 @@
   }
 
   .hero {
-    padding-top: 124px;
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 36px) !important;
     padding-bottom: 76px;
     min-height: auto;
   }
@@ -459,11 +488,11 @@
 
 @media (max-width: 576px) {
   :root {
-    --nav-height: 64px;
+    --nav-height: 56px;
   }
 
   html {
-    scroll-padding-top: calc(var(--nav-height) + 14px);
+    scroll-padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 14px);
   }
 
   body {
@@ -478,14 +507,16 @@
     width: min(calc(100% - 24px), var(--container));
   }
 
-  .site-header {
-    padding: 8px 0;
-    padding-top: max(8px, env(safe-area-inset-top));
+  .site-header,
+  .site-header.is-scrolled {
+    padding: 0 !important;
+    padding-top: env(safe-area-inset-top, 0px) !important;
   }
 
-  .nav-shell {
-    min-height: 52px;
-    padding: 5px 8px 5px 18px;
+  .site-header .nav-shell {
+    min-height: var(--nav-height) !important;
+    height: var(--nav-height) !important;
+    padding: 0 16px !important;
   }
 
   .menu-toggle {
@@ -496,7 +527,7 @@
   }
 
   .mobile-nav {
-    top: var(--nav-height);
+    top: calc(var(--nav-height) + env(safe-area-inset-top, 0px));
     padding: 16px 14px max(32px, env(safe-area-inset-bottom, 24px));
   }
 
@@ -509,12 +540,12 @@
   }
 
   .hero {
-    padding-top: calc(var(--nav-height) + 24px);
-    padding-bottom: 54px;
+    padding-top: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 28px) !important;
+    padding-bottom: 50px;
   }
 
   .page-hero {
-    padding: calc(var(--nav-height) + 20px) 0 16px;
+    padding: calc(var(--nav-height) + env(safe-area-inset-top, 0px) + 20px) 0 16px !important;
   }
 
   .page-hero + .section-padding {

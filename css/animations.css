@@ -94,19 +94,21 @@
     background 340ms ease;
 }
 
-.project-card.has-revealed:hover,
-.case-study-card.has-revealed:hover,
-.service-card.has-revealed:hover,
-.process-card.has-revealed:hover,
-.content-block.has-revealed:hover,
-.contact-card.has-revealed:hover,
-.stat-card.has-revealed:hover,
-.approach-card.has-revealed:hover,
-.flyer-mockup.has-revealed:hover,
-.social-post-card.has-revealed:hover,
-.widget-demo-card.has-revealed:hover,
-.portal-showcase-card.has-revealed:hover {
-  transform: translate3d(0, -7px, 0);
+@media (hover: hover) and (pointer: fine) {
+  .project-card.has-revealed:hover,
+  .case-study-card.has-revealed:hover,
+  .service-card.has-revealed:hover,
+  .process-card.has-revealed:hover,
+  .content-block.has-revealed:hover,
+  .contact-card.has-revealed:hover,
+  .stat-card.has-revealed:hover,
+  .approach-card.has-revealed:hover,
+  .flyer-mockup.has-revealed:hover,
+  .social-post-card.has-revealed:hover,
+  .widget-demo-card.has-revealed:hover,
+  .portal-showcase-card.has-revealed:hover {
+    transform: translate3d(0, -7px, 0);
+  }
 }
 
 .project-card.has-revealed:active,

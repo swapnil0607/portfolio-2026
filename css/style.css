@@ -38,12 +38,9 @@ html {
   color-scheme: dark;
   background-color: #030614;
   background: #030614;
-  scroll-behavior: smooth;
   scroll-padding-top: 110px;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
-  overflow-x: hidden;
-  max-width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -79,6 +76,7 @@ body {
   font-family: var(--font-body);
   letter-spacing: -0.005em;
   -webkit-font-smoothing: antialiased;
+  -webkit-overflow-scrolling: touch;
 }
 
 body.menu-open {
@@ -154,6 +152,8 @@ textarea {
   width: 100%;
   padding: 16px 0;
   background: transparent;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
   transition: padding 0.35s var(--ease-apple), background 0.35s var(--ease-apple);
 }
 
