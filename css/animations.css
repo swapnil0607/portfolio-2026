@@ -11,7 +11,7 @@
 }
 
 .hero-item {
-  animation: heroFadeUp 520ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: heroFadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
   backface-visibility: hidden;
 }
 
@@ -50,10 +50,10 @@
 .widget-demo-card,
 .portal-showcase-card {
   opacity: 0;
-  transform: translate3d(0, 22px, 0);
+  transform: translate3d(0, 24px, 0);
   transition:
-    opacity 620ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms),
-    transform 620ms cubic-bezier(0.22, 1, 0.36, 1) var(--reveal-delay, 0ms);
+    opacity 680ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms),
+    transform 680ms cubic-bezier(0.16, 1, 0.3, 1) var(--reveal-delay, 0ms);
   will-change: opacity, transform;
 }
 
@@ -87,10 +87,10 @@
 .widget-demo-card.has-revealed,
 .portal-showcase-card.has-revealed {
   transition:
-    transform 420ms cubic-bezier(0.16, 1, 0.3, 1),
-    border-color 320ms ease,
-    box-shadow 420ms ease,
-    background 320ms ease;
+    transform 480ms cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 340ms ease,
+    box-shadow 480ms cubic-bezier(0.16, 1, 0.3, 1),
+    background 340ms ease;
 }
 
 .project-card.has-revealed:hover,
@@ -105,7 +105,14 @@
 .social-post-card.has-revealed:hover,
 .widget-demo-card.has-revealed:hover,
 .portal-showcase-card.has-revealed:hover {
-  transform: translate3d(0, -8px, 0);
+  transform: translate3d(0, -7px, 0);
+}
+
+.project-card.has-revealed:active,
+.case-study-card.has-revealed:active,
+.service-card.has-revealed:active,
+.widget-demo-card.has-revealed:active {
+  transform: translate3d(0, -2px, 0) scale(0.99);
 }
 
 [data-parallax] {
