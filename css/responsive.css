@@ -59,6 +59,27 @@
     min-height: 40px;
   }
 
+  /* Mobile GPU Performance Optimization:
+     Disable multi-pass Gaussian backdrop-filter on scrolling cards.
+     Use high-performance opaque dark glass for 60fps scrolling. */
+  .glass-panel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(11, 16, 32, 0.9);
+    box-shadow: 0 14px 36px -6px rgba(0, 0, 0, 0.5), var(--apple-rim-subtle);
+  }
+
+  .site-header .nav-shell,
+  .mobile-nav {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
+  .orb-one,
+  .orb-two {
+    display: none;
+  }
+
   .hero {
     padding-top: 124px;
     padding-bottom: 76px;

@@ -41,13 +41,13 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     },
     {
-      rootMargin: isTouchViewport ? "0px 0px 18% 0px" : "0px 0px -8% 0px",
-      threshold: isTouchViewport ? 0.01 : 0.12
+      rootMargin: isTouchViewport ? "0px 0px 35% 0px" : "0px 0px -8% 0px",
+      threshold: isTouchViewport ? 0.001 : 0.12
     }
   );
 
   animatedItems.forEach((item, index) => {
-    item.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * (isTouchViewport ? 24 : 45)}ms`);
+    item.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * (isTouchViewport ? 0 : 45)}ms`);
     observer.observe(item);
   });
 
