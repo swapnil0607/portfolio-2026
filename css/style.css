@@ -144,17 +144,26 @@ textarea {
   box-shadow: 0 32px 80px -14px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.22);
 }
 
+.site-header {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+}
+
+.nav-shell {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100%;
+}
+
 @media (min-width: 993px) {
   .site-header {
-    position: fixed;
-    z-index: 100;
-    top: 0;
-    left: 0;
-    width: 100%;
     padding: 16px 0;
     background: transparent;
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
     transition: padding 0.35s var(--ease-apple), background 0.35s var(--ease-apple);
   }
 
@@ -164,9 +173,6 @@ textarea {
 
   .nav-shell {
     min-height: 56px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     gap: 24px;
     padding: 6px 20px;
     border: 1px solid rgba(255, 255, 255, 0.12);
